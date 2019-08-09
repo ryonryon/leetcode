@@ -15,11 +15,9 @@ var romanToInt = function romanToInt(s) {
     if (romMap[tempChar] < romMap[nextChar]) {
       ansInt = ansInt + romMap[nextChar] - romMap[tempChar];
       i++;
-
-      continue;
+    } else {
+      ansInt = ansInt + romMap[tempChar];
     }
-
-    ansInt = ansInt + romMap[tempChar];
   }
 
   return ansInt;
