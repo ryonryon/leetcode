@@ -1,6 +1,11 @@
-// https://leetcode.com/problems/remove-element/
-
-function removeElement(nums, val): number {
+/**
+ * https://leetcode.com/problems/remove-element/
+ *
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+function removeElement(nums: number[], val: number): number {
   let soFar: number = 0;
 
   while (soFar < nums.length) {

@@ -10,7 +10,7 @@ function searchInsert(nums: number[], target: number): number {
   if (nums.length == 0) {
     return 0;
   }
-  return searchInsertHelper(nums, target, 0, nums.length - 1);
+  return searchInsertHelper(nums, target, 0, nums.length - 1)!;
 }
 
 function searchInsertHelper(
