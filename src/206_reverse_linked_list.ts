@@ -1,4 +1,4 @@
-import ListNode from "./utilities/ListNode";
+import ListNode from "./utilities/list_node";
 
 /**
  * Definition for singly-linked list.

@@ -5,7 +5,7 @@
  * @return {ListNode}
  */
 
-import ListNode from "./utilities/ListNode";
+import ListNode from "./utilities/list_node";
 
 var deleteDuplicates = function(head: ListNode): ListNode {
   let tempNode = head;
