@@ -25,7 +25,7 @@ class MyStack {
    * Removes the element on top of the stack and returns that element.
    * @return {number}
    */
-  pop(): number {
+  pop(): number | undefined {
     return this.arr.pop();
   }
 
