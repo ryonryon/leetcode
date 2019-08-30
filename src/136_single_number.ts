@@ -9,7 +9,6 @@ function singleNumber(nums: number[]): number {
   let numberSet = new Set<number>();
 
   for (let i = 0; i < nums.length; i++) {
-    console.log(numberSet.has(nums[i]));
     if (numberSet.has(nums[i])) {
       numberSet.delete(nums[i]);
     } else {
