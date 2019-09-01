@@ -6,8 +6,14 @@
  */
 
 function addDigits(num: number): number {
-    
-    num
+  if (num < 10) return num;
+
+  let addedDigits: number = 0;
+  `${num}`.split("").forEach(element => {
+    addedDigits += Number(element)!;
+  });
+
+  return addDigits(addedDigits);
 }
 
 describe("add digits", () => {
