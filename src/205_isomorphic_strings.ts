@@ -16,22 +16,22 @@ function isIsomorphic(s: string, t: string): boolean {
 
   for (let i = 0; i < s.length; i++) {
     if (sMap.has(s[i])) {
-      sMap.get(s[i]).push(i);
+      sMap.get(s[i])!.push(i);
     } else {
       sMap.set(s[i], [i]);
     }
 
     if (tMap.has(t[i])) {
-      tMap.get(t[i]).push(i);
+      tMap.get(t[i])!.push(i);
     } else {
       tMap.set(t[i], [i]);
     }
 
-    let sMapMember: number[] = sMap.get(s[i]);
-    let tMapMember: number[] = tMap.get(t[i]);
+    let sMapMember: number[] | undefined = sMap.get(s[i]);
+    let tMapMember: number[] | undefined = tMap.get(t[i]);
 
-    for (let j = 0; j < sMapMember.length; j++) {
-      if (sMapMember[j] !== tMapMember[j]) {
+    for (let j = 0; j < sMapMember!.length; j++) {
+      if (sMapMember![j] !== tMapMember![j]) {
         return false;
       }
     }
