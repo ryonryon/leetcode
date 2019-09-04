@@ -6,22 +6,40 @@
  */
 
 function isUgly(num: number): boolean {
-  return isUglyHelper(num, 1);
-}
+  if (num <= 0) return false;
+  if (num <= 5) return true;
 
-function isUglyHelper(num: number, soFar: number): boolean {
-  if (soFar === num) {
-    return true;
-  } else if (num < soFar) {
-    return false;
+  while (num % 2 === 0) {
+    num = num / 2;
   }
-
-  let t = isUglyHelper(num, soFar * 2);
-  let t2 = isUglyHelper(num, soFar * 3);
-  let t3 = isUglyHelper(num, soFar * 5);
-  if (t || t2 || t3) return true;
-  return false;
+  while (num % 3 === 0) {
+    num = num / 3;
+  }
+  while (num % 5 === 0) {
+    num = num / 5;
+  }
+  return num === 1;
 }
+
+// function isUgly(num: number): boolean {
+//   return isUglyHelper(num, 1);
+// }
+
+// function isUglyHelper(num: number, soFar: number): boolean {
+//   if (soFar === num) {
+//     return true;
+//   } else if (num < soFar) {
+//     return false;
+//   }
+
+//   if (
+//     isUglyHelper(num, soFar * 2) ||
+//     isUglyHelper(num, soFar * 3) ||
+//     isUglyHelper(num, soFar * 5)
+//   )
+//     return true;
+//   return false;
+// }
 
 describe("is ugly", () => {
   test("#1", () => {
