@@ -5,7 +5,7 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-import TreeNode from "./utilities/tree_node";
+import TreeNode from "../src/utilities/tree_node";
 
 function isSameTree(p: TreeNode, q: TreeNode): boolean {
   let serializedP = serializeTree(p);

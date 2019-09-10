@@ -1,4 +1,4 @@
-import ListNode from "./utilities/list_node";
+import ListNode from "../src/utilities/list_node";
 
 /**
  * https://leetcode.com/problems/remove-linked-list-elements/

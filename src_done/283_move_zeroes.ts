@@ -22,9 +22,4 @@ describe("move zeroes", () => {
     moveZeroes(arr);
     expect(arr).toEqual([1, 3, 12, 0, 0]);
   });
-  test("#2", () => {
-    const arr = [0, 0, 1];
-    moveZeroes(arr);
-    expect(arr).toEqual([1, 0, 0]);
-  });
 });

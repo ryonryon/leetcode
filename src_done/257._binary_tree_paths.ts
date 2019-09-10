@@ -1,4 +1,4 @@
-import TreeNode from "./utilities/tree_node";
+import TreeNode from "../src/utilities/tree_node";
 
 /**
  * https://leetcode.com/problems/binary-tree-paths/submissions/

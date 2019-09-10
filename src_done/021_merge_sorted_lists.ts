@@ -6,7 +6,7 @@
  * @return {ListNode}
  */
 
-import ListNode from "./utilities/list_node";
+import ListNode from "../src/utilities/list_node";
 
 function mergeTwoLists(
   l1: ListNode | null,
