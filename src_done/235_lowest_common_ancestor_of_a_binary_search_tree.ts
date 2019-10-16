@@ -11,22 +11,16 @@ function lowestCommonAncestor(
   root: TreeNode,
   p: TreeNode,
   q: TreeNode
-): TreeNode {}
-
-function findPAncestor(
-  root: TreeNode,
-  p: TreeNode,
-  q: TreeNode
-): TreeNode | null {
-  if (root.val === p.val) return root;
-
-  if (root.left) {
-    return findPAncestor(root.left, p, q);
-  } else if (root.right) {
-    return findPAncestor(root.right, p, q);
+): TreeNode {
+  while (true) {
+    if (p.val! > root.val! && q.val! > root.val!) {
+      root = root.left!;
+    } else if (p.val! < root.val! && q.val! < root.val!) {
+      root = root.right!;
+    } else {
+      return root;
+    }
   }
-
-  return null;
 }
 
 describe("lowest common ancestor", () => {
