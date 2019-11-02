@@ -1,4 +1,4 @@
-import TreeNode from "../src/utilities/tree_node";
+import TreeNode from "../utilities/tree_node";
 
 /**
  * https://leetcode.com/problems/binary-tree-paths/submissions/
@@ -7,7 +7,7 @@ import TreeNode from "../src/utilities/tree_node";
  * @return {string[]}
  */
 
-function binaryTreePaths(root: TreeNode | null): string[] {
+function binaryTreePaths(root: TreeNode<number> | null): string[] {
   if (!root) {
     return [];
   }
@@ -17,7 +17,7 @@ function binaryTreePaths(root: TreeNode | null): string[] {
 }
 
 function binaryTreePathsHelper(
-  root: TreeNode,
+  root: TreeNode<number>,
   soFarArr: string[],
   soFar: string
 ): void {
@@ -43,10 +43,10 @@ function binaryTreePathsHelper(
 
 describe("binary tree paths", () => {
   test("#1", () => {
-    const headTree: TreeNode = new TreeNode(1);
-    headTree.left = new TreeNode(2);
-    headTree.left.left = new TreeNode(5);
-    headTree.right = new TreeNode(3);
+    const headTree: TreeNode<number> = new TreeNode<number>(1);
+    headTree.left = new TreeNode<number>(2);
+    headTree.left.left = new TreeNode<number>(5);
+    headTree.right = new TreeNode<number>(3);
 
     expect(binaryTreePaths(headTree)).toEqual(["1->2->5", "1->3"]);
   });

@@ -6,20 +6,20 @@
  * @return {ListNode}
  */
 
-import ListNode from "../src/utilities/list_node";
+import ListNode from "../utilities/list_node";
 
 function mergeTwoLists(
-  l1: ListNode | null,
-  l2: ListNode | null
-): ListNode | null {
+  l1: ListNode<number> | null,
+  l2: ListNode<number> | null
+): ListNode<number> | null {
   if (l1 == null && l2 == null) {
     return null;
   }
 
-  let ansNode: ListNode | null = null;
-  let tempAns: ListNode | null = null;
-  let tempNode1: ListNode | null = null;
-  let tempNode2: ListNode | null = null;
+  let ansNode: ListNode<number> | null = null;
+  let tempAns: ListNode<number> | null = null;
+  let tempNode1: ListNode<number> | null = null;
+  let tempNode2: ListNode<number> | null = null;
 
   if (l1 != null) {
     tempNode1 = l1;
@@ -97,8 +97,8 @@ describe("merge sorted lists", () => {
 
     const newHeadNode = mergeTwoLists(headNode, _headNode);
 
-    let tempAnsNode: ListNode | null = ansHeadNode;
-    let tempNode: ListNode | null = newHeadNode;
+    let tempAnsNode: ListNode<number> | null = ansHeadNode;
+    let tempNode: ListNode<number> | null = newHeadNode;
 
     // [1, 1, 2, 3, 4]
     while (true) {
@@ -114,33 +114,33 @@ describe("merge sorted lists", () => {
   });
 
   test("#2", () => {
-    const node1: ListNode | null = null;
-    const node2: ListNode | null = null;
+    const node1: ListNode<number> | null = null;
+    const node2: ListNode<number> | null = null;
 
     expect(mergeTwoLists(node1, node2)).toBeNull();
   });
 
   test("#3", () => {
-    const node1: ListNode | null = new ListNode(2);
-    const node2: ListNode | null = new ListNode(1);
+    const node1: ListNode<number> | null = new ListNode<number>(2);
+    const node2: ListNode<number> | null = new ListNode<number>(1);
 
-    const ansHeadNode: ListNode | null = new ListNode(1);
-    const ansNode: ListNode | null = new ListNode(2);
+    const ansHeadNode: ListNode<number> | null = new ListNode<number>(1);
+    const ansNode: ListNode<number> | null = new ListNode<number>(2);
     ansHeadNode.next = ansNode;
 
-    const resultNode: ListNode | null = mergeTwoLists(node1, node2);
+    const resultNode: ListNode<number> | null = mergeTwoLists(node1, node2);
 
     expect(resultNode!.val).toEqual(ansHeadNode!.val);
     expect(resultNode!.next!.val).toEqual(ansHeadNode!.next!.val);
   });
 
   test("#4", () => {
-    const node1: ListNode | null = null;
-    const node2: ListNode | null = new ListNode(0);
+    const node1: ListNode<number> | null = null;
+    const node2: ListNode<number> | null = new ListNode<number>(0);
 
-    const ansHeadNode: ListNode | null = new ListNode(0);
+    const ansHeadNode: ListNode<number> | null = new ListNode<number>(0);
 
-    const resultNode: ListNode | null = mergeTwoLists(node1, node2);
+    const resultNode: ListNode<number> | null = mergeTwoLists(node1, node2);
 
     expect(resultNode!.val).toEqual(ansHeadNode!.val);
     expect(resultNode!.next).toEqual(ansHeadNode!.next);

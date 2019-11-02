@@ -1,8 +1,8 @@
-export default class ListNode {
-  constructor(val: number) {
+export default class ListNode<T> {
+  constructor(val: T) {
     this.val = val;
     this.next = null;
   }
-  val: number;
-  next: ListNode | null;
+  val: T;
+  next: ListNode<T> | null;
 }

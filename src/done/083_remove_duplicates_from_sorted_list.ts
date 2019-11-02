@@ -5,9 +5,9 @@
  * @return {ListNode}
  */
 
-import ListNode from "../src/utilities/list_node";
+import ListNode from "../utilities/list_node";
 
-var deleteDuplicates = function(head: ListNode): ListNode {
+var deleteDuplicates = function(head: ListNode<number>): ListNode<number> {
   let tempNode = head;
 
   while (tempNode != null && tempNode.next != null) {

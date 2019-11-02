@@ -1,4 +1,4 @@
-import ListNode from "../src/utilities/list_node";
+import ListNode from "../utilities/list_node";
 
 /**
  * https://leetcode.com/problems/remove-linked-list-elements/
@@ -10,11 +10,14 @@ import ListNode from "../src/utilities/list_node";
  * @return {ListNode}
  */
 
-function removeElements(head: ListNode, val: number): ListNode | null {
+function removeElements(
+  head: ListNode<number>,
+  val: number
+): ListNode<number> | null {
   if (!head) {
     return head;
   }
-  let headNode: ListNode = head;
+  let headNode: ListNode<number> = head;
   while (headNode.val === val) {
     if (headNode.next) {
       headNode = headNode.next;
@@ -23,7 +26,7 @@ function removeElements(head: ListNode, val: number): ListNode | null {
     }
   }
 
-  let tempNode: ListNode | null = headNode;
+  let tempNode: ListNode<number> | null = headNode;
 
   while (tempNode!.next) {
     if (tempNode!.next.val === val) {
@@ -43,13 +46,13 @@ function removeElements(head: ListNode, val: number): ListNode | null {
 
 describe("remove element", () => {
   test("#1", () => {
-    const head: ListNode = new ListNode(1);
-    head.next = new ListNode(2);
-    head.next.next = new ListNode(6);
-    head.next.next.next = new ListNode(3);
-    head.next.next.next.next = new ListNode(4);
-    head.next.next.next.next.next = new ListNode(5);
-    head.next.next.next.next.next.next = new ListNode(6);
+    const head: ListNode<number> = new ListNode<number>(1);
+    head.next = new ListNode<number>(2);
+    head.next.next = new ListNode<number>(6);
+    head.next.next.next = new ListNode<number>(3);
+    head.next.next.next.next = new ListNode<number>(4);
+    head.next.next.next.next.next = new ListNode<number>(5);
+    head.next.next.next.next.next.next = new ListNode<number>(6);
 
     removeElements(head, 6);
 
