@@ -6,7 +6,7 @@
  * @return {ListNode}
  */
 
-import ListNode from "./utilities/list_node";
+import ListNode from "../utilities/list_node";
 
 function addTwoNumbers(
   l1: ListNode<number>,
