@@ -7,7 +7,7 @@ import TreeNode from "../utilities/tree_node";
  * @return {boolean}
  */
 
-function isValidBST(root: TreeNode<number> | null) {
+function isValidBST(root: TreeNode<number> | null): boolean {
   if (root === null) return true;
   const q: [[TreeNode<number>, number, number]] = [[root, -Infinity, Infinity]];
 
@@ -19,6 +19,24 @@ function isValidBST(root: TreeNode<number> | null) {
   }
 
   return true;
+}
+
+function isValidBSTRecursive(root: TreeNode<number> | null): boolean {
+  function _helper(
+    _node: TreeNode<number> | null,
+    less: number,
+    greater: number
+  ): boolean {
+    if (_node === null) return true;
+    if (_node.val! <= less || greater <= _node.val!) return false;
+
+    return (
+      _helper(_node.left, less, _node.val!) &&
+      _helper(_node.right, _node.val!, greater)
+    );
+  }
+
+  return _helper(root, -Infinity, Infinity);
 }
 
 describe("isValidBST", () => {
@@ -42,5 +60,26 @@ describe("isValidBST", () => {
     const root = new TreeNode(0);
 
     expect(isValidBST(root)).toBe(true);
+  });
+  test("#4", () => {
+    const root = new TreeNode(5);
+    root.left = new TreeNode(3);
+    root.right = new TreeNode(9);
+    root.left.left = new TreeNode(2);
+    root.left.right = new TreeNode(4);
+    root.right.left = new TreeNode(6);
+    root.right.right = new TreeNode(12);
+
+    expect(isValidBSTRecursive(root)).toBe(true);
+  });
+  test("#5", () => {
+    const root = null;
+
+    expect(isValidBSTRecursive(root)).toBe(true);
+  });
+  test("#6", () => {
+    const root = new TreeNode(0);
+
+    expect(isValidBSTRecursive(root)).toBe(true);
   });
 });
