@@ -6,19 +6,18 @@
  */
 
 function generate(numRows: number): number[][] {
-  const triangle: number[][] = [];
-  for (let i = 0; i < numRows; i++) {
-    const row = new Array(i + 1).fill(0);
-    row[0] = 1;
-    row[row.length - 1] = 1;
-
-    for (let j = 1; j < row.length - 1; j++) {
-      row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
-    }
-
-    triangle.push(row);
+  function _helper(i: number, j: number): number {
+    if (i === 0 || j === 0) return ans[i][j];
+    return _helper(i - 1, j - 1) + _helper(i - 1, j);
   }
-  return triangle;
+
+  const ans: number[][] = [];
+
+  for (let i = 0; i < numRows + 1; i++) {
+    for (let j = 0; j < i + 1; j++) {
+      _;
+    }
+  }
 }
 
 describe("generate", () => {
