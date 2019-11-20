@@ -1,4 +1,4 @@
-import TreeNode from "../utilities/tree_node";
+import TreeNode from "../../utilities/tree_node";
 
 /**
  * @param {TreeNode} root
