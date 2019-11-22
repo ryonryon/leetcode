@@ -7,16 +7,30 @@
  */
 
 function solveSudoku(board: string[][]): void {
-  function backtrackSudoku(row: number = 0) {
+  function backtrackSudoku(row: number = 0): boolean {
     for (let col = 0; col < 9; col++) {
+      if (board[row][col] !== ".") continue;
       for (let i = 1; i <= 9; i++) {
-        if (isValid(board, row, col, i.toString())) {
-          place(board, row, col, i.toString());
+        const num = i.toString();
+        if (isValid(board, row, col, num)) {
+          board[row][col] = num;
+          if (!isSolved(board)) {
+            const isDone = backtrackSudoku(row + 1);
+            if (isDone) return isDone;
+            board[row][col] = ".";
+          } else {
+            return true;
+          }
         }
       }
     }
   }
   backtrackSudoku();
+  console.log(board);
+}
+
+function isSolved(_board: string[][]): boolean {
+  return !_board[8].includes(".");
 }
 
 function isValid(
@@ -42,43 +56,31 @@ function isValid(
   return true;
 }
 
-function place(
-  _board: string[][],
-  row: number,
-  col: number,
-  num: string
-): void {
-  _board[row][col] = num;
-}
-
-function remove(_board: string[][], row: number, col: number): void {
-  _board[row][col] = "";
-}
-
 describe("solveSudoku", () => {
   const sudokuBoard = [
-    ["5", "3", "", "", "7", "", "", "", ""],
-    ["6", "", "", "1", "9", "5", "", "", ""],
-    ["", "9", "8", "", "", "", "", "6", ""],
-    ["8", "", "", "", "6", "", "", "", "3"],
-    ["4", "", "", "8", "", "3", "", "", "1"],
-    ["7", "", "", "", "2", "", "", "", "6"],
-    ["", "6", "", "", "", "", "2", "8", ""],
-    ["", "", "", "4", "1", "9", "", "", "5"],
-    ["", "", "", "", "8", "", "", "7", "9"]
+    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+    [".", ".", ".", ".", "8", ".", ".", "7", "9"]
   ];
+  test("#1", () => {
+    solveSudoku(sudokuBoard);
 
-  solveSudoku(sudokuBoard);
-
-  expect(sudokuBoard).toEqual([
-    ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
-    ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
-    ["1", "9", "8", "3", "4", "2", "5", "6", "7"],
-    ["8", "5", "9", "7", "6", "1", "4", "2", "3"],
-    ["4", "2", "6", "8", "5", "3", "7", "9", "1"],
-    ["7", "1", "3", "9", "2", "4", "8", "5", "6"],
-    ["9", "6", "1", "5", "3", "7", "2", "8", "4"],
-    ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
-    ["3", "4", "5", "2", "8", "6", "1", "7", "9"]
-  ]);
+    expect(sudokuBoard).toEqual([
+      ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
+      ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
+      ["1", "9", "8", "3", "4", "2", "5", "6", "7"],
+      ["8", "5", "9", "7", "6", "1", "4", "2", "3"],
+      ["4", "2", "6", "8", "5", "3", "7", "9", "1"],
+      ["7", "1", "3", "9", "2", "4", "8", "5", "6"],
+      ["9", "6", "1", "5", "3", "7", "2", "8", "4"],
+      ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
+      ["3", "4", "5", "2", "8", "6", "1", "7", "9"]
+    ]);
+  });
 });

@@ -7,17 +7,28 @@
 
 function generate(numRows: number): number[][] {
   function _helper(i: number, j: number): number {
-    if (i === 0 || j === 0) return ans[i][j];
-    return _helper(i - 1, j - 1) + _helper(i - 1, j);
+    if (i === 0 || j === 0) {
+      ans[i][j] = 1;
+    } else {
+      ans[i][j] = _helper(i - 1, j - 1) + _helper(i - 1, j);
+    }
+
+    return ans[i][j];
   }
 
   const ans: number[][] = [];
 
-  for (let i = 0; i < numRows + 1; i++) {
-    for (let j = 0; j < i + 1; j++) {
-      _;
-    }
+  for (let i = 0; i < numRows; i++) {
+    ans.push(new Array(i + 1).fill(0));
+    // [ans[i][0], ans[i][ans[i].length - 1]] = [1, 1];
   }
+
+  for (let i = 0; i < ans[numRows - 1].length; i++) {
+    ans[numRows - 1][i] = _helper(numRows - 1, i);
+  }
+
+  console.log(ans);
+  return ans;
 }
 
 describe("generate", () => {
