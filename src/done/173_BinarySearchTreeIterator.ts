@@ -3,7 +3,7 @@
  * https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/140/introduction-to-a-bst/1008/
  *
  */
-import TreeNode from "./utilities/tree_node";
+import TreeNode from "../utilities/tree_node";
 
 /**
  * @param {TreeNode} root
