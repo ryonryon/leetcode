@@ -1,4 +1,4 @@
-import TreeNode from "./utilities/tree_node";
+import TreeNode from "../utilities/tree_node";
 
 /**
  * https://leetcode.com/problems/binary-tree-level-order-traversal/
