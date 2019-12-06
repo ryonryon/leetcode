@@ -7,27 +7,39 @@ import TreeNode from "../utilities/tree_node";
  * @param {number} sum
  * @return {number[][]}
  */
-function pathSum(root: TreeNode<number>, sum: number): number[][] {
-  const ans: number[][] = [];
+function pathSum(root: TreeNode<number> | null, sum: number): number[][] {
+  if (!root) return [];
+  if (!root.left && !root.right) return root.val === sum ? [[root.val]] : [];
 
-  function helper(node: TreeNode<number>, arr: number[] = []): void {
-    if (
-      !node.left &&
-      !node.right &&
-      sum === arr.reduce((a, b) => a + b, 0) + node.val!
-    )
-      ans.push([...arr, node.val!]);
+  const left = pathSum(root.left, sum - root.val!);
+  const right = pathSum(root.right, sum - root.val!);
 
-    arr.push(node.val!);
-    if (node.left) helper(node.left, arr);
-    if (node.right) helper(node.right, arr);
-    arr.pop();
-  }
-
-  if (root) helper(root);
-
-  return ans;
+  return [
+    ...(left.length > 0
+      ? left.map((path: number[]) => [root.val!, ...path])
+      : []),
+    ...(right.length > 0
+      ? right.map((path: number[]) => [root.val!, ...path])
+      : [])
+  ];
 }
+// function pathSum(root: TreeNode<number>, sum: number): number[][] {
+//   const ans: number[][] = [];
+//   function helper(node: TreeNode<number>, arr: number[] = []): void {
+//     if (
+//       !node.left &&
+//       !node.right &&
+//       sum === arr.reduce((a, b) => a + b, 0) + node.val!
+//     )
+//       ans.push([...arr, node.val!]);
+//     arr.push(node.val!);
+//     if (node.left) helper(node.left, arr);
+//     if (node.right) helper(node.right, arr);
+//     arr.pop();
+//   }
+//   if (root) helper(root);
+//   return ans;
+// }
 
 describe("pathSum", () => {
   test("#1", () => {
