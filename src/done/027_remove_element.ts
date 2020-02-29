@@ -6,23 +6,20 @@
  * @return {number}
  */
 function removeElement(nums: number[], val: number): number {
-  let soFar: number = 0;
-
-  while (soFar < nums.length) {
-    if (nums[soFar] == val) {
-      for (let i = soFar; i < nums.length - 1; i++) {
-        nums[i] = nums[i + 1];
-      }
-      nums.pop();
-      soFar--;
+  let pointer = 0;
+  while (pointer < nums.length) {
+    if (nums[pointer] == val) {
+      nums.splice(pointer, 1);
+      continue;
     }
-    soFar++;
+    pointer++;
   }
+
   return nums.length;
 }
 
-describe("remove element", () => {
-  test("#1", () => {
+describe('remove element', () => {
+  test('#1', () => {
     expect(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)).toBe(5);
   });
 });
